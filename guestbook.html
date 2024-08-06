@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
+    <style>
+        .form-floating {
+            background-color: green;
+
+            border: 15px solid rgb(206, 172, 108);
+            border-radius: 10px;
+            width: 1000px;
+            height: 100%;
+            margin: 30px auto 30px auto;
+        }
+
+        .comment_box {
+            margin: 20px auto auto 20px;
+        }
+
+        #name {
+            width: 100px;
+            height: 20px;
+            text-align: center;
+        }
+
+        #comment {
+            width: 97%;
+            height: 130px;
+            margin-top: 20px;
+        }
+
+        #btn {
+            float: right;
+            margin-right: 25px;
+        }
+
+        #writebtn {
+            width: 100px;
+            height: 50px;
+        }
+
+        #image {
+            margin: 100px auto 50px 30px;
+        }
+
+        .img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        #incom {
+            margin-left: 20px;
+        }
+
+        #image_box {
+            border-top: 5px solid gray;
+            margin-right: 30px;
+        }
+
+        strong{
+            font-size: larger;
+            color: aliceblue;
+        }
+    </style>
+
+
+    <script type="module">
+
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDbpCP-Cx2wzTweBUDUbpXwkGeewXSxzLY",
+            authDomain: "sparta-b3eff.firebaseapp.com",
+            projectId: "sparta-b3eff",
+            storageBucket: "sparta-b3eff.appspot.com",
+            messagingSenderId: "194725713248",
+            appId: "1:194725713248:web:1ec11cdf7c7db9001eba05",
+            measurementId: "G-PSWVGD13SP"
+        };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+
+        //파이어베이스 데이터 업로드
+        $("#writebtn").click(async function () {
+            let name = $('#name').val();
+            let comment = $('#comment').val();
+
+            let doc = {
+                'name': name,
+                'comment': comment
+            };
+            await addDoc(collection(db, "comment"), doc);
+            alert('등록 완료!');
+            window.location.reload();
+        })
+
+
+        let docs = await getDocs(collection(db, "comment"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let name = row['name'];
+            let comment = row['comment'];
+
+            let temp = `
+            <p id="image_box">
+            <img src="https://i.pinimg.com/280x280_RS/66/ce/c1/66cec18796d258bffde99945565481a7.jpg" class="img">
+            ${name} <br>
+            <p id="incom">${comment}</p>
+            </p>
+            `
+            $('#image').append(temp);
+        });
+
+
+    </script>
+</head>
+
+
+<body>
+
+    <li>MAIN PAGE <br></ll>
+    <li>MEMBER <br></ll>
+    <li>TMI <br></ll>
+    <li>방명록 <br></ll>
+
+        <div class="form-floating">
+            <div class="comment_box">
+                <strong>방명록</strong><br><br>
+                <textarea class="floatingText" placeholder="이름 입력" id="name"></textarea>
+                
+                <textarea class="floatingText" placeholder="댓글을 남겨보세요" id="comment"></textarea>
+                <p>
+                    <div id="btn">
+                    <button id="writebtn">등록</button>
+                    </div>
+                </p>
+            </div>
+
+            <div id="image">
+                <p id="image_box">
+                    <img src="https://i.pinimg.com/280x280_RS/66/ce/c1/66cec18796d258bffde99945565481a7.jpg"
+                        class="img">
+                    이름 <br>
+                <p id="incom">내용</p>
+                </p>
+            </div>
+
+
+        </div>
+
+
+</body>
+
+</html>
