@@ -7,6 +7,72 @@
     <title>방명록</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Stylish&display=swap');
+        .body, button, input, select, textarea, .comment {
+            font-family: "Stylish", serif;
+        }
+        .logo {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .ddd {
+            color: #2d2d2d;
+            font-weight: bold;
+            font-size: 60px;
+            text-align: center;
+            margin: 50px 70px 20px auto;
+            font-family: "Trebuchet MS", Dotum, Arial;
+        }
+
+        .test {
+            height: 287px;
+            margin: 100px auto 0;
+            width: 503px;
+            border: solid;
+            font-size: 22px;
+        }
+        #topMenu {
+            background-color: #2d2d2d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            width: 900px;
+            margin:auto;
+        }
+
+        #topMenu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        #topMenu ul li {
+            margin: 0;
+        }
+
+        #topMenu .menuLink {
+            text-decoration: none;
+            color: white;
+            display: block;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: "Stylish", serif;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #topMenu .menuLink:hover {
+            color: red;
+            background-color: #4d4d4d;
+        }
+
         .form-floating {
             background-color: green;
             border: 15px solid rgb(206, 172, 108);
@@ -19,7 +85,7 @@
         .comment_box {
             margin: 20px auto auto 20px;
         }
-
+    
         #name {
             width: 100px;
             height: 20px;
@@ -177,6 +243,22 @@
 
 
 <body>
+    <div class="container-fluid">
+        <div class="ddd">
+            <img src="LOGO B.png" class="logo" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+            Semicolons
+        </div>
+    </div>
+    <nav id="topMenu">
+        <ul>
+            <li><a class="menuLink" href="mainpage.html">HOME</a></li>
+            <li><a class="menuLink" href="#">MEMBER</a></li>
+            <li><a class="menuLink" href="TMI.html">TMI</a></li>
+            <li><a class="menuLink" href="guestbook.html">방명록</a></li>
+
+        </ul>
+    </nav>
+    
     <div class="form-floating">
         <div class="comment_box">
             <strong>방명록</strong><br><br>

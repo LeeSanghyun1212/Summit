@@ -9,26 +9,32 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
-        .logo{
-            float:left;
-            margin-left:600px
+        .container-fluid {
+            margin: 0px auto 0px auto;
         }
-        .product-img-div {
-            display: table-cell;
+
+        .logo {
+            display: inline-block;
+            /* 로고를 인라인 블록 요소로 설정하여 텍스트 옆에 붙일 수 있도록 함 */
             vertical-align: middle;
+            /* 수직 정렬을 위해 중앙 정렬 설정 */
+            margin-right: 10px;
+            /* 로고와 텍스트 사이의 간격 설정 */
+        }
+
+        .product-img-div {
+            width: 497px;
+            height: 281px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
         }
 
         .product-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+            width: 497px;
+            height: 281px;
 
-        .test {
-            height: 287px;
-            margin: 100px 700px 0px 700px;
-            border: solid;
-            font-size: 22px;
         }
 
         .ddd {
@@ -36,20 +42,27 @@
             font-weight: bold;
             font-size: 60px;
             text-align: center;
-            margin: 40px 660px 20px 0px;
-           
+            margin: 40px 70px 20px auto;
+            /* 수평 중앙 정렬 */
             font-family: "Trebuchet MS", Dotum, Arial;
         }
 
+        .test {
+            height: 287px;
+            margin: 100px auto 0;
+            width: 503px;
+            /* 수평 중앙 정렬 */
+            border: solid;
+            font-size: 22px;
+        }
         #topMenu {
             background-color: #2d2d2d;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 80px;
-            width: auto;
-            margin-left: 27%;
-            margin-right: 27%;
+            width: 900px;
+            margin:auto;
         }
 
         #topMenu ul {
@@ -86,20 +99,17 @@
 
 <body>
     <div class="container-fluid">
-        <title>Bootstrap</title>
-         
-            <div class="ddd">
-                <img src="LOGO B.png" class="logo" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
-                Semicolons
-            </div>
-        
+        <div class="ddd">
+            <img src="LOGO B.png" class="logo" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+            Semicolons
+        </div>
     </div>
     <nav id="topMenu">
         <ul>
-            <li><a class="menuLink" href="#">About us</a></li>
-            <li><a class="menuLink" href="#">Ministries</a></li>
-            <li><a class="menuLink" href="#">Community</a></li>
-            <li><a class="menuLink" href="#">Locations</a></li>
+            <li><a class="menuLink" href="mainpage.html">HOME</a></li>
+            <li><a class="menuLink" href="#">MEMBER</a></li>
+            <li><a class="menuLink" href="TMI.html">TMI</a></li>
+            <li><a class="menuLink" href="guestbook.html">방명록</a></li>
 
         </ul>
     </nav>
