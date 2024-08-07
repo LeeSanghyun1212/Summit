@@ -9,26 +9,61 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
-        .logo{
-            float:left;
-            margin-left:600px
+        .container-fluid {
+            margin: 0px auto 0px auto;
         }
-        .product-img-div {
-            display: table-cell;
+
+        .mycards {
+            width: 800px;
+            margin: 100px auto 0px auto;
+        }
+        .card{
+            background-color: #79e3ea;
+            padding:20px;
+            margin-bottom: 20px;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            height: 300px;
+        }
+        .card-title{
+            text-align:center;
+            color:#2d2d2d;
+            font-weight: bold;
+        }
+        .card-text {
+            color:#2d2d2d;
+            font-weight: bold;
+        }
+        .logo {
+            display: inline-block;
+            /* 로고를 인라인 블록 요소로 설정하여 텍스트 옆에 붙일 수 있도록 함 */
             vertical-align: middle;
+            /* 수직 정렬을 위해 중앙 정렬 설정 */
+            margin-right: 10px;
+            /* 로고와 텍스트 사이의 간격 설정 */
+        }
+
+        .product-img-div {
+            width: 497px;
+            height: 281px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
         }
 
         .product-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+            width: 497px;
+            height: 281px;
 
-        .test {
-            height: 287px;
-            margin: 100px 700px 0px 700px;
-            border: solid;
-            font-size: 22px;
+        }
+        .fff{
+            color:#2d2d2d;
+            font-weight: bold;
+            font: size 25px;
+            text-align: center;
         }
 
         .ddd {
@@ -36,9 +71,18 @@
             font-weight: bold;
             font-size: 60px;
             text-align: center;
-            margin: 40px 660px 20px 0px;
-           
+            margin: 40px 70px 20px auto;
+            /* 수평 중앙 정렬 */
             font-family: "Trebuchet MS", Dotum, Arial;
+        }
+
+        .test {
+            height: 287px;
+            margin: 100px auto 0;
+            width: 503px;
+            /* 수평 중앙 정렬 */
+            border: solid;
+            font-size: 22px;
         }
 
         #topMenu {
@@ -47,9 +91,8 @@
             justify-content: center;
             align-items: center;
             height: 80px;
-            width: auto;
-            margin-left: 27%;
-            margin-right: 27%;
+            width: 900px;
+            margin: auto;
         }
 
         #topMenu ul {
@@ -86,20 +129,17 @@
 
 <body>
     <div class="container-fluid">
-        <title>Bootstrap</title>
-         
-            <div class="ddd">
-                <img src="LOGO B.png" class="logo" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
-                Semicolons
-            </div>
-        
+        <div class="ddd">
+            <img src="LOGO B.png" class="logo" alt="Logo" width="80" height="80" class="d-inline-block align-text-top">
+            Semicolons
+        </div>
     </div>
     <nav id="topMenu">
         <ul>
-            <li><a class="menuLink" href="#">About us</a></li>
-            <li><a class="menuLink" href="#">Ministries</a></li>
-            <li><a class="menuLink" href="#">Community</a></li>
-            <li><a class="menuLink" href="#">Locations</a></li>
+            <li><a class="menuLink" href="mainpage.html">HOME</a></li>
+            <li><a class="menuLink" href="#">MEMBER</a></li>
+            <li><a class="menuLink" href="TMI.html">TMI</a></li>
+            <li><a class="menuLink" href="guestbook.html">방명록</a></li>
 
         </ul>
     </nav>
@@ -107,16 +147,46 @@
         <div class="product-img-div">
             <img class="product-img" src="캡처.PNG">
         </div>
+        
     </div>
-    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-        <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold">Custom jumbotron</h1>
-            <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in
-                previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to
-                your liking.</p>
-            <button class="btn btn-primary btn-lg" type="button">Example button</button>
+    <div class="fff">⭐열공하는 13조⭐</div>
+    <div class="mycards container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-3">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">⭐팀 이름 소개⭐</h5><br>
+                        <p class="card-text">세미콜론은 코드의 <br>마지막을 의미합니다.<br><br> 저희 팀은 노력과<br> 끊임없는 배움을 통해 도전적인 문제에 <br>접근하고, 해결하는 것을 목표로 합니다.</p>
+                        <p class="card-text"><small class="text-body-secondary"></small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-3">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">⭐팀 목표⭐</h5><br>
+                        <p class="card-text">✔배운 내용 잘 활용해보기<br>✔배우지 않은 것도 검색해보며 구현 해보기<br>✔깃 사용법 숙달하기<br>✔끊임없이 노력하기</p>
+                        <p class="card-text"><small class="text-body-secondary"></small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-3">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">⭐우리팀 규칙⭐</h5><br>
+                        <p class="card-text">✔모르는 것이 있으면 짚고 넘어가기<br>✔피드백 요청에 확실하게 대답하기<br>✔소통 잘하고 상처 받는 말하지 않기<br>✔회의는 하루에 2번!<br>✔물어보는 것 무서워하지 않기</p>
+                        <p class="card-text"><small class="text-body-secondary"></small></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </div> 
+    <br>
+    <br>
+    <br>
 </body>
 
 </html>
