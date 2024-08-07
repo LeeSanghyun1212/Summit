@@ -84,6 +84,8 @@
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        
         // Firebase 개인 키값
         const firebaseConfig = {
             apiKey: "AIzaSyDbpCP-Cx2wzTweBUDUbpXwkGeewXSxzLY",
@@ -94,9 +96,13 @@
             appId: "1:194725713248:web:1ec11cdf7c7db9001eba05",
             measurementId: "G-PSWVGD13SP"
         };
+
+
         // Firebase 인스턴스 초기화
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+
+
         //Firebase 데이터 업로드
         $("#writebtn").click(async function () {
             let name = $('#name').val();
@@ -111,6 +117,8 @@
             alert('등록 완료!');
             window.location.reload();
         })
+
+
         //Firebase 데이터 출력
         let docs = await getDocs(collection(db, "comment"));
         docs.forEach((doc) => {
@@ -127,7 +135,7 @@
             <br>
             <p id="incom">${comment}</p>
             </p>
-            <div class="edit_box" id="edit_${key}">
+            <div class="edit_box" id="edit_${key}" style="display: none">
                 <textarea class="floatingText" placeholder="수정할 내용을 입력하세요" id="editComment_${key}"></textarea>
                 <button class="saveEdit" data-key="${key}" data-id="${doc.id}" id="edit_button_${key}">수정</button>
             </div>
