@@ -17,6 +17,11 @@
             * {
                 font-family: 'Gowun Dodum', sans-serif;
             }
+
+            a {
+                text-decoration: none;
+            }
+
             .mytitle {
                 height: 500px;
                 color: #fff;
@@ -70,11 +75,88 @@
                 margin: 10px 10px 0 0;
             }
 
-            .btn-secondary {
-                background-color: #2d2d2d;
+            .gnb {
+                position: fixed;
+                top: 80px;
+                right: 7rem;
+
+                z-index: 1000;
             }
+
+            .gnb_li {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 40px;
+                height: 40px;
+                line-height: 60px;
+                text-align: center;
+                color: transparent;
+                transition: 0.9s;
+            }
+
+            .gnb_li:before {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                background: #102c57;
+                border-radius: 60px;
+                top: 0;
+                left: 0;
+                filter: blur(0.05em);
+            }
+
+            .gnb_li > a {
+                display: block;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 14px;
+                text-align: center;
+                color: white;
+                top: 0;
+                left: 0;
+                filter: blur(0px);
+            }
+
+            .gnb.on .gnb_li:nth-child(1) {
+                top: 60px;
+            }
+
+            .gnb.on .gnb_li:nth-child(2) {
+                top: 120px;
+            }
+
+            .gnb.on .gnb_li:nth-child(3) {
+                top: 180px;
+            }
+
+            .gnb.on .gnb_li:nth-child(4) {
+                top: 240px;
+            }
+
+            /* .gnb.on .gnb_li:nth-child(5) {
+                top: 300px;
+            } */
+            /* .gnb.on .gnb_li:nth-child(6) {
+                top: 360px;
+            }
+            .gnb.on .gnb_li:nth-child(7) {
+                top: 420px;
+            } */
+            /* .gnb.on .gnb_li:nth-child(8) {
+  top: 480px;
+} */
         </style>
         <script type="module">
+            $('.gnb_btn').on('click', function (e) {
+                //각각의 li에 다른 위치값주기
+                $('.gnb').toggleClass('on');
+            });
+
             // Firebase SDK 라이브러리 가져오기
             import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
             import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
@@ -144,6 +226,24 @@
         </script>
     </head>
     <body>
+        <ul class="gnb">
+            <li class="gnb_li s1">
+                <a href="#">01</a>
+            </li>
+            <li class="gnb_li s2">
+                <a href="#">02</a>
+            </li>
+            <li class="gnb_li s3">
+                <a href="#">03</a>
+            </li>
+            <li class="gnb_li s4">
+                <a href="#">04</a>
+            </li>
+            <li class="gnb_li s4">
+                <a href="#" class="gnb_btn">click</a>
+            </li>
+        </ul>
+
         <div class="mytitle">
             <h1>팀 세미콜론의 TMI</h1>
             <button id="savebtn">오늘의 TMI 작성</button>
