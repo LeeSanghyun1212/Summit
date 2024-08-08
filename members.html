@@ -10,12 +10,12 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+
         * {
             font-family: "Gothic A1", sans-serif;
             font-weight: 400;
             font-style: normal;
-        }
-        .logo {
+        }.logo {
             display: inline-block;
             vertical-align: middle;
             margin-right: 10px;
@@ -76,6 +76,7 @@
             color: red;
             background-color: #4d4d4d;
         }
+
         .titledivcl {
             height: 250px;
             color: white;
@@ -143,8 +144,38 @@
             border: 1px solid black;
             margin-top: 20px;
         }
-    </style>
 
+        .deletebtndivcl {
+            height: 100px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-color: none;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .deletebtndivcl>button {
+            width: 150px;
+            height: 50px;
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+
+        .deletecarddivcl {
+            width: 500px;
+            margin: 30px auto 30px auto;
+            display: none;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px blue;
+            border-radius: 5px;
+        }
+    </style>
     <script type="module">
         // Firebase SDK 라이브러리 가져오기
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
@@ -172,20 +203,22 @@
 
         $("#registrationbtnid").click(async function () {
             $('#resistrationcarddivid').toggle()
-        })
+        })        
 
+        //Firebase 데이터 업로드
         $("#savebtnid").click(async function () {
             let image = $('#image').val()
             let name = $('#name').val()
             let MBTI = $('#MBTI').val()
             let introduce = $('#introduce').val()
-
+            let key = Math.random().toString(36).substr(2, 9);
 
             let doc = {
                 'image': image,
                 'name': name,
                 'MBTI': MBTI,
                 'introduce': introduce,
+                key: key,
 
 
             };
@@ -194,14 +227,17 @@
             window.location.reload()
         })
 
+
+
+        //Firebase 데이터 출력
         let docs = await getDocs(collection(db, "member"));
         docs.forEach((doc) => {
             let row = doc.data();
-
             let image = row['image']
             let name = row['name']
             let MBTI = row['MBTI']
             let introduce = row['introduce']
+            let key = row['key']
 
             let temp_html = ` 
                 <div id="postingdivid">
@@ -212,6 +248,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">${name}</h5>
+                                            <button class="deletetbtn" id="${doc.id}">삭제</button>
                                 <p class="card-text"><small class="text-body-secondary">${MBTI}</small></p>
                                 <p class="card-text"><strong>${introduce}</strong></p>
                             </div>
@@ -221,9 +258,20 @@
             $('#postingdivid').append(temp_html)
         });
 
-    </script>
 
+        //Firebase 데이터 삭제
+        $(document).on('click', '.deletetbtn', async function () {
+            const docId = $(this).attr('id');
+            console.log(docId);
+            await deleteDoc(doc(db, "member", docId));
+            alert('삭제 완료!');
+            window.location.reload();
+        });
+
+
+    </script>
 </head>
+
 
 <body>
     <div class="container-fluid">
